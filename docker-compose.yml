@@ -1,0 +1,13 @@
+version: '2'
+services:
+    webpack-demo:
+        image: webpack-demo:dev
+        container_name: webpack-demo
+        environment:
+          - JWT_SECRET=MoWasHere
+          - JWT_ALGORITHM=HS256
+        ports:
+          - 80:80
+        volumes:
+          - ./app:/var/www/html
+          - ./docker/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf

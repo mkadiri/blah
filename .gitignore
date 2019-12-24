@@ -1,0 +1,7 @@
+composer.lock
+supervisord.log
+supervisord.pid
+app/node_modules
+app/dist
+app/v8-compile*
+.idea
