@@ -1,4 +1,5 @@
-import '../sass/styles.scss';
+import _ from 'lodash';
 
-console.log('Webpack Boilerplate');
-
+alert(
+  _.join(['bahhh', 'module', 'loaded!'], ' ')
+);
