@@ -3,17 +3,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        index: './src/javascript/index.js',
-        another: './src/javascript/another.js'
+        index: './src/javascript/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
     },
     mode: 'development',
     
