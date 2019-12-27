@@ -4,7 +4,8 @@ RUN apk --no-cache add \
     nginx supervisor curl && \
     apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/v3.8/main/ nodejs=8.14.0-r0 nodejs-npm=8.14.0-r0 automake autoconf nasm zlib-dev && \
     npm config set unsafe-perm true && \
-    npm install -g grunt-cli && npm cache clear && rm -rf /tmp/npm-* && \
+    npm install -g grunt-cli && \
+#    npm cache clear && rm -rf /tmp/npm-* && \
     npm config set unsafe-perm false && \
     npm install -g webpack webpack-dev-server webpack-cli
 
