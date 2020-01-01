@@ -1,6 +1,4 @@
 const path = require("path");
-const common = require("./webpack.common");
-const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -8,7 +6,11 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Critters = require('critters-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = {
+  entry: {
+    main: "./src/index.js",
+    vendor: "./src/vendor.js"
+  },
   mode: "production",
   output: {
     filename: "[name].bundle.js",
@@ -51,7 +53,21 @@ module.exports = merge(common, {
           "css-loader", //2. Turns css into commonjs
           "sass-loader" //1. Turns sass into css
         ]
+      },
+      {
+        test: /\.html$/,
+        use: ["html-loader"]
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "images"
+          }
+        }
       }
     ]
   }
-});
+};
