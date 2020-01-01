@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Critters = require('critters-webpack-plugin');
 
 module.exports = merge(common, {
   mode: "production",
@@ -29,7 +30,17 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].css" }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      chunksSortMode: 'none'
+    }),
+    new Critters({
+      // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
+      preload: 'swap',
+
+      // Don't inline critical font-face rules, but preload the font URLs:
+      preloadFonts: true
+    })
   ],
   module: {
     rules: [
