@@ -8,8 +8,8 @@ const Critters = require('critters-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: "./src/index.js",
-    vendor: "./src/vendor.js"
+    main: "./src/assets/js/index.js",
+    vendor: "./src/assets/js/vendor.js"
   },
   mode: "production",
   output: {
