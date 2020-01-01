@@ -31,7 +31,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].css" }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css"
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       chunksSortMode: 'none'
@@ -49,7 +51,13 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader, //3. Extract css into files
+          //3. Extract css into files
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './css/',
+            },
+          },
           "css-loader", //2. Turns css into commonjs
           "sass-loader" //1. Turns sass into css
         ]

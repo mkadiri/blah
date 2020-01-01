@@ -1,3 +1,3 @@
-import "./main.css";
+import "./assets/css/main.css";
 
 console.log("J");
